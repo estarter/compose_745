@@ -1,0 +1,9 @@
+version: "2.4"
+services:
+  container1:
+    environment:
+      CUSTOM: 'true'
+  
+  container2:
+    image: alpine:3.6
+
