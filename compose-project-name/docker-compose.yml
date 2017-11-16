@@ -1,0 +1,4 @@
+version: "2"
+services:
+  container1:
+    image: alpine:3.6

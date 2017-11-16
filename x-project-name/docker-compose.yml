@@ -1,0 +1,6 @@
+version: "2"
+x-project-name: 'myproj'
+services:
+  container1:
+    image: alpine:3.6
+
