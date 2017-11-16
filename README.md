@@ -1,4 +1,4 @@
-# Intro
+# How to persist a project-name in docker-compose
 
 This repo contains some use-cases for docker-compose issue [#745](https://github.com/docker/compose/issues/745).
 
