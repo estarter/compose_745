@@ -42,7 +42,9 @@ Use `x-project-name` feature in docker-compose file plus env variable. (is it re
 COMPOSE_X_PROJECT_NAME=1 docker-compose -f PR_5378/docker-compose.yml -f PR_5378/docker-compose2.yml down
 # => project name: myproj --- GOOD
 docker-compose -f PR_5378/docker-compose.yml -f PR_5378/docker-compose2.yml down
-# => project name: xprojectname --- FAIL
+# => project name: pr5378 --- FAIL
+docker-compose -f PR_5378/docker-compose.yml -f PR_5378/docker-compose2.yml --project-directory PR_5378 down
+# => project name: pr5378 --- FAIL
 cd PR_5378 && docker-compose -f docker-compose.yml -f docker-compose2.yml down
 # => project name: myproj --- GOOD
 ```
