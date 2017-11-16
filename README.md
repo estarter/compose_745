@@ -1,4 +1,6 @@
-Here are some example use-cases for docker-compose issue #745.
+# How to persist a project-name in docker-compose
+
+This repo contains some use-cases for docker-compose issue [#745](https://github.com/docker/compose/issues/745).
 
 Each folder means to illustrate different possibility to define a project name in a docker-compose project.
 
@@ -8,7 +10,7 @@ Folders share the same docker compose project that contains 2 docker-compose fil
 
 `docker-compose ... down` is used for testing the project name. It results in removing the network; from the network's name you can understand the project names.
 
-# without-project-name
+## without-project-name
 
 Docker-compose files do not define a project name. User can specify project name by -p option:
 
@@ -21,7 +23,7 @@ cd without-project-name && docker-compose -p MYPROJ -f docker-compose.yml -f doc
 
 Conclusion: it works consistent but we can't persist project name in cvs.
 
-# compose-project-name
+## compose-project-name
 
 Use COMPOSE_PROJECT_NAME env variable via .env file.
 
@@ -34,7 +36,7 @@ cd compose-project-name && docker-compose -f docker-compose.yml -f docker-compos
 
 Conclusion: we can persist project name but behaviour is inconsistent, it only works from proj folder.
 
-# PR_5378
+## [PR_5378](https://github.com/docker/compose/pull/5378)
 
 Use `x-project-name` feature in docker-compose file plus env variable. (is it really different from compose-project-name?)
 
@@ -51,7 +53,7 @@ cd PR_5378 && docker-compose -f docker-compose.yml -f docker-compose2.yml down
 
 Conclusion: we can persist project name but behaviour is inconsistent, it only works from proj folder.
 
-# PR_5369
+## [PR_5369](https://github.com/docker/compose/pull/5369)
 
 Use `project_name` feature in docker-compose file.
 
