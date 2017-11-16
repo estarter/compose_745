@@ -14,9 +14,9 @@ Docker-compose files do not define a project name. User can specify project name
 
 ```bash
 docker-compose -p MYPROJ -f without-project-name/docker-compose.yml -f without-project-name/docker-compose2.yml down
-# => project name: myproj
+# => project name: myproj --- GOOD
 cd without-project-name && docker-compose -p MYPROJ -f docker-compose.yml -f docker-compose2.yml down
-# => project name: myproj
+# => project name: myproj --- GOOD
 ```
 
 Conclusion: it works consistent but we can't persist project name in cvs.
@@ -27,9 +27,9 @@ Use COMPOSE_PROJECT_NAME env variable via .env file.
 
 ```bash
 docker-compose -f compose-project-name/docker-compose.yml -f compose-project-name/docker-compose2.yml down
-# => project name: composeprojectname
+# => project name: composeprojectname --- FAIL
 cd compose-project-name && docker-compose -f docker-compose.yml -f docker-compose2.yml down
-# => project name: myproj
+# => project name: myproj --- GOOD
 ```
 
 Conclusion: we can persist project name but behaviour is inconsistent, it only works from proj folder.
@@ -40,11 +40,11 @@ Use `x-project-name` feature in docker-compose file plus env variable. (is it re
 
 ```bash
 COMPOSE_X_PROJECT_NAME=1 docker-compose -f PR_5378/docker-compose.yml -f PR_5378/docker-compose2.yml down
-# => project name: myproj
+# => project name: myproj --- GOOD
 docker-compose -f PR_5378/docker-compose.yml -f PR_5378/docker-compose2.yml down
-# => project name: xprojectname
+# => project name: xprojectname --- FAIL
 cd PR_5378 && docker-compose -f docker-compose.yml -f docker-compose2.yml down
-# => project name: myproj
+# => project name: myproj --- GOOD
 ```
 
 Conclusion: we can persist project name but behaviour is inconsistent, it only works from proj folder.
@@ -55,9 +55,9 @@ Use `project_name` feature in docker-compose file.
 
 ```bash
 docker-compose -f PR_5369/docker-compose.yml -f PR_5369/docker-compose2.yml down
-# => project name: myproj
+# => project name: myproj --- GOOD
 cd PR_5369 && docker-compose -f docker-compose.yml -f docker-compose2.yml down
-# => project name: myproj
+# => project name: myproj --- GOOD
 ```
 
 Conclusion: we can persist project name so that docker-compose would respect it indepentent of the working directory.
