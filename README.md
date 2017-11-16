@@ -34,29 +34,29 @@ cd compose-project-name && docker-compose -f docker-compose.yml -f docker-compos
 
 Conclusion: we can persist project name but behaviour is inconsistent, it only works from proj folder.
 
-# x-project-name (PR #5378)
+# PR_5378
 
 Use `x-project-name` feature in docker-compose file plus env variable. (is it really different from compose-project-name?)
 
 ```bash
-COMPOSE_X_PROJECT_NAME=1 docker-compose -f x-project-name/docker-compose.yml down
+COMPOSE_X_PROJECT_NAME=1 docker-compose -f PR_5378/docker-compose.yml -f PR_5378/docker-compose2.yml down
 # => project name: myproj
-docker-compose -f x-project-name/docker-compose.yml down
+docker-compose -f PR_5378/docker-compose.yml -f PR_5378/docker-compose2.yml down
 # => project name: xprojectname
-cd x-project-name && docker-compose -f docker-compose.yml down
+cd PR_5378 && docker-compose -f docker-compose.yml -f docker-compose2.yml down
 # => project name: myproj
 ```
 
 Conclusion: we can persist project name but behaviour is inconsistent, it only works from proj folder.
 
-# project_name (PR #5369)
+# PR_5369
 
 Use `project_name` feature in docker-compose file.
 
 ```bash
-docker-compose -f project_name/docker-compose.yml -f project_name/docker-compose2.yml down
+docker-compose -f PR_5369/docker-compose.yml -f PR_5369/docker-compose2.yml down
 # => project name: myproj
-cd project_name && docker-compose -f docker-compose.yml -f docker-compose2.yml down             
+cd PR_5369 && docker-compose -f docker-compose.yml -f docker-compose2.yml down
 # => project name: myproj
 ```
 
